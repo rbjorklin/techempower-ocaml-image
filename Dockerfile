@@ -1,13 +1,13 @@
 # -*- mode: dockerfile -*-
-FROM alpine:3.17
+FROM alpine:3.19
 
 ARG REVISION=unknown
 ARG IMAGE_CREATED
-ARG COMPILER_VERSION=4.14.1
+ARG COMPILER_VERSION=5.1.1
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
-LABEL org.opencontainers.image.base.name=alpine:3.17
-LABEL org.opencontainers.image.source=https://github.com/rbjorklin
+LABEL org.opencontainers.image.base.name=alpine:3.19
+LABEL org.opencontainers.image.source=https://github.com/rbjorklin/techempower-ocaml-image
 LABEL org.opencontainers.image.revision=${REVISION}
 LABEL org.opencontainers.image.created=${IMAGE_CREATED}
 
@@ -56,7 +56,8 @@ RUN apk add --no-cache \
     make\
     musl-dev\
     opam\
-    postgresql-dev
+    postgresql-dev\
+    zstd-dev
 
 RUN opam init\
     --disable-sandboxing\

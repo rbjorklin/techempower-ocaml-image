@@ -1,6 +1,6 @@
 IMAGE_CREATED := $(shell date --rfc-3339=seconds)
 #export DOCKER_BUILDKIT ?= 1
-COMPILER_VERSION := 4.14.1
+COMPILER_VERSION := 5.1.1
 REVISION := $(shell git rev-list -n 1 --abbrev-commit --abbrev=8 HEAD)
 TAG := $(COMPILER_VERSION)-$(REVISION)
 
