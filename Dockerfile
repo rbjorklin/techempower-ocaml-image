@@ -64,6 +64,8 @@ RUN opam init\
     --auto-setup\
     --compiler ocaml-base-compiler.${COMPILER_VERSION}
 
-  #opam install --depext-only -y $PKGS && \
+# Pin to a commit with this performance fix: https://github.com/inhabitedtype/angstrom/pull/219
+RUN opam pin add --no-action --yes angstrom https://github.com/inhabitedtype/angstrom.git#aff4665d207d85087e57420ce698fb9f0c8746b3
+
 RUN \
   opam install --no-depexts -y $PKGS
