@@ -1,12 +1,12 @@
 # -*- mode: dockerfile -*-
-FROM alpine:3.19
+FROM alpine:3.21.2
 
 ARG REVISION=unknown
 ARG IMAGE_CREATED
-ARG COMPILER_VERSION=5.1.1
+ARG COMPILER_VERSION=5.3.0
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
-LABEL org.opencontainers.image.base.name=alpine:3.19
+LABEL org.opencontainers.image.base.name=alpine:3.21.2
 LABEL org.opencontainers.image.source=https://github.com/rbjorklin/techempower-ocaml-image
 LABEL org.opencontainers.image.revision=${REVISION}
 LABEL org.opencontainers.image.created=${IMAGE_CREATED}
@@ -63,9 +63,6 @@ RUN opam init\
     --disable-sandboxing\
     --auto-setup\
     --compiler ocaml-base-compiler.${COMPILER_VERSION}
-
-# Pin to a commit with this performance fix: https://github.com/inhabitedtype/angstrom/pull/219
-RUN opam pin add --no-action --yes angstrom https://github.com/inhabitedtype/angstrom.git#aff4665d207d85087e57420ce698fb9f0c8746b3
 
 RUN \
   opam install --no-depexts -y $PKGS
