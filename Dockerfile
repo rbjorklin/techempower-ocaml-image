@@ -19,6 +19,9 @@ ENV OCAMLRUNPARAM=a=2,o=240
 # https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
 ENV TZ=:/etc/localtime
 
+# https://github.com/microsoft/mimalloc?tab=readme-ov-file#performance
+ENV LD_PRELOAD=/usr/lib/libmimalloc.so.2
+
 ENV PKGS="atd \
     atdgen \
     atdgen-runtime \
@@ -54,6 +57,7 @@ RUN apk add --no-cache \
     linux-headers\
     m4\
     make\
+    mimalloc2\
     musl-dev\
     opam\
     postgresql-dev\
