@@ -1,12 +1,12 @@
 # -*- mode: dockerfile -*-
-FROM alpine:3.21.2
+FROM alpine:3.21.3
 
 ARG REVISION=unknown
 ARG IMAGE_CREATED
 ARG COMPILER_VERSION=5.3.0
 
 # https://github.com/opencontainers/image-spec/blob/main/annotations.md
-LABEL org.opencontainers.image.base.name=alpine:3.21.2
+LABEL org.opencontainers.image.base.name=alpine:3.21.3
 LABEL org.opencontainers.image.source=https://github.com/rbjorklin/techempower-ocaml-image
 LABEL org.opencontainers.image.revision=${REVISION}
 LABEL org.opencontainers.image.created=${IMAGE_CREATED}
