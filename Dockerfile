@@ -14,12 +14,12 @@ LABEL org.opencontainers.image.created=${IMAGE_CREATED}
 # https://caml.inria.fr/pub/docs/manual-ocaml/libref/Gc.html
 # https://linux.die.net/man/1/ocamlrun
 # https://blog.janestreet.com/memory-allocator-showdown/
-ENV OCAMLRUNPARAM a=2,o=240
+ENV OCAMLRUNPARAM=a=2,o=240
 
 # https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/
-ENV TZ  :/etc/localtime
+ENV TZ=:/etc/localtime
 
-ENV PKGS atd \
+ENV PKGS="atd \
     atdgen \
     atdgen-runtime \
     biniou\
@@ -39,7 +39,7 @@ ENV PKGS atd \
     ppx_rapper_lwt \
     tyxml \
     webmachine\
-    yojson
+    yojson"
 
 RUN apk add --no-cache \
     bash\
@@ -64,5 +64,4 @@ RUN opam init\
     --auto-setup\
     --compiler ocaml-base-compiler.${COMPILER_VERSION}
 
-RUN \
-  opam install --no-depexts -y $PKGS
+RUN opam install --no-depexts -y $PKGS
