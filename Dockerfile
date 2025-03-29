@@ -32,8 +32,12 @@ ENV PKGS="atd \
     cohttp-lwt-unix\
     conf-libev \
     dune \
+    eio_linux \
+    eio_main \
     httpaf \
     httpaf-lwt-unix \
+    httpun \
+    httpun-eio \
     lwt \
     lwt_ppx\
     opium \
